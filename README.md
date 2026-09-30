@@ -1,11 +1,11 @@
 <body>
 	<div align="center">
-		<h1>42 Jobs</h1>
+		<h1>hunt42</h1>
 		<hr>
 	</div>
 	<br>
 	<div>
-		<h2 align="center"> 🤔 O que é?</h2>
+		<h2> 🤔 O que é?</h2>
 		<p>
 			Uma tentativa de clarear as um algo muito grande, o mercado de trabalho.
 		</p>
@@ -30,10 +30,13 @@
 	</div>
 	<br>
 	<div>
-		<h2 align="Center"> E como usar? </h2>
-		<p>Simples, basta acessar o arquivo o site e aproveitar as dicas ✅</p>
+		<h2> E como usar? </h2>
+		<p>Simples, basta acessar o arquivo html abaixo e aproveitar as dicas ✅</p>
 		<p>E que a carteira de trabalho recaia sobre você 📘✨</p>
 	</div>
+    <div>
+        <h2><a href="./workshop-empregabilidade.html">WorkshopeEmpregabilidade</a></h2>
+    </div>
 </body>
 
 <!--
