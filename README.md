@@ -1,107 +1,77 @@
-<body>
-	<div align="center">
-		<h1>hunt42</h1>
-		<hr>
-	</div>
-	<br>
-	<div>
-		<h2> 🤔 O que é?</h2>
-		<p>
-			Uma tentativa de clarear as um algo muito grande, o mercado de trabalho.
-		</p>
-		<p>
-			Hoje em dia o mercado brasileiro se tornou algo muito complexo. 
-			Esse trabalho é uma tentativade de ajudar pessoas com interesse
-			em conseguir uma vaga de entrado no mercado de tecnologia.
-		</p>
-		<p>
-			E não, não vou te ensinar em um passe de mágica! 
-			Hoje o mercado está competitivo, e conseguir um trabalho, <b>DA TRABALHO!</b>
-		</p>
-		<p>
-			Então depois de 1 ano pesquisando muito e procurando um início legal,
-			conseguir reunir muita informaçãoa relevante, e acredito que posso ajudar
-			você cadete a chegar mais perto da sua tão sonhada vaga !
-		</p>
-		<p>
-			<i><b>*PS</b>: Este guia é uma ajuda, na maioria das vezes os cadetes conseguem emprego fácil</i><br>
-			<i><b>*PS2</b>: E sim, eu recomendo o <b>estágio</b> inicialmente pela carga horária mais leve durante o CC e por maior facilidade de ingresso !</i>
-		</p>
-	</div>
-	<br>
-	<div>
-		<h2> E como usar? </h2>
-		<p>Simples, basta acessar o arquivo html abaixo e aproveitar as dicas ✅</p>
-		<p>E que a carteira de trabalho recaia sobre você 📘✨</p>
-	</div>
-    <div>
-        <h2><a href="https://github.com/fec539e1-dbc4-4a34-9642-7b5f3ae828c4" download>WorkshopeEmpregabilidade</a></h2>
-    </div>
-</body>
+<div align="center">
+	<h1>hunt42</h1>
+	<p><i>Empregabilidade: como já dizia Furacão 2000, “…tem que ter disposição.”</i></p>
+	<hr>
+</div>
+
+<div>
+	<h2>🤔 O que é?</h2>
+	<p>
+		Uma tentativa de clarear algo muito grande: o mercado de trabalho.
+	</p>
+	<p>
+		Hoje o mercado brasileiro se tornou algo muito complexo.
+		Este trabalho é uma tentativa de ajudar quem tem interesse
+		em conseguir uma vaga de entrada no mercado de tecnologia.
+	</p>
+	<p>
+		E não, não vou te ensinar nada num passe de mágica!
+		Hoje o mercado está competitivo, e conseguir um trabalho <b>DÁ TRABALHO!</b>
+	</p>
+	<p>
+		Depois de 1 ano pesquisando muito e procurando um início legal,
+		consegui reunir muita informação relevante, e acredito que posso ajudar
+		você, cadete, a chegar mais perto da sua tão sonhada vaga!
+	</p>
+	<p>
+		<i><b>*PS</b>: este guia é uma ajuda, não uma garantia. O esforço continua sendo seu.</i><br>
+		<i><b>*PS2</b>: e sim, eu recomendo o <b>estágio</b> no começo, pela carga horária mais leve durante o CC e pela maior facilidade de entrada!</i>
+	</p>
+</div>
+
+<div>
+	<h2>📂 O que tem aqui?</h2>
+	<ul>
+		<li><b>A apresentação do workshop</b>, com os 13 capítulos: mercado, autoconhecimento, onde buscar vagas, currículo, pitch, processo seletivo, dinâmicas, entrevistas e organização da busca.</li>
+		<li><b>As referências</b> usadas na pesquisa, logo abaixo.</li>
+	</ul>
+</div>
+
+<div>
+	<h2>▶️ Como usar?</h2>
+	<ol>
+		<li>Baixe o arquivo <a href="workshop-empregabilidade.html"><code>workshop-empregabilidade.html</code></a> (no GitHub, abra o arquivo e clique em <i>Download raw file</i>).</li>
+		<li>Abra no navegador. Funciona até sem internet.</li>
+		<li>Navegue pelos slides com o teclado:</li>
+	</ol>
+	<table>
+		<tr><th>Tecla</th><th>O que faz</th></tr>
+		<tr><td><code>→</code> · <code>PageDown</code> · <code>Espaço</code></td><td>avança</td></tr>
+		<tr><td><code>←</code> · <code>PageUp</code></td><td>volta</td></tr>
+		<tr><td><code>Home</code> · <code>End</code></td><td>primeiro · último slide</td></tr>
+		<tr><td><code>F</code></td><td>tela cheia</td></tr>
+		<tr><td><code>H</code></td><td>mostra os atalhos</td></tr>
+	</table>
+	<p>E que a carteira de trabalho recaia sobre você 📘✨</p>
+</div>
+
+<div>
+	<h2>📚 Referências</h2>
+	<h3>Mercado e portas de entrada</h3>
+	<ul>
+		<li><a href="https://exame.com/bussola/como-redesenhar-a-entrada-de-jovens-profissionais-na-era-da-ia/">Como redesenhar a entrada de jovens profissionais na era da IA</a> · Exame</li>
+		<li><a href="https://web.inteli.edu.br/hubfs/CDL/Estudo%20de%20Carreiras%20em%20Tecnologia%202026%20_%20Inteli.pdf">Estudo de Carreiras em Tecnologia 2026</a> · Inteli (PDF), com os dados da Sonda Tech sobre como as pessoas entraram em tecnologia (39% pelo estágio)</li>
+		<li><a href="https://g1.globo.com/trabalho-e-carreira/noticia/2026/08/10/veja-as-10-profissoes-mais-valorizadas-da-tecnologia.ghtml">Salários de até R$ 53 mil e falta de profissionais: veja as 10 profissões mais valorizadas da tecnologia</a> · g1, 10/08/2026</li>
+	</ul>
+	<h3>Autoconhecimento</h3>
+	<ul>
+		<li><a href="https://g1.globo.com/trabalho-e-carreira/noticia/2026/06/03/o-que-os-jovens-buscam-em-um-emprego-crescimento-pesa-mais-que-salario-diz-pesquisa.ghtml">O que os jovens buscam em um emprego?</a> · g1 (pesquisa CIEE com 8 mil jovens)</li>
+	</ul>
+</div>
 
 <!--
-    ==================================================
-    GUIA RÁPIDO DE TAGS HTML PARA REFERÊNCIA
-    ==================================================
-
-    -- ESTRUTURA E SEÇÕES --
-    header      : Cabeçalho da página ou de uma seção
-    nav         : Conjunto de links de navegação
-    main        : Conteúdo principal do documento
-    section     : Seção genérica de conteúdo
-    article     : Conteúdo autônomo e independente (post, notícia)
-    aside       : Conteúdo secundário/lateral (sidebar)
-    footer      : Rodapé da página ou de uma seção
-    div         : Contêiner genérico de bloco (sem valor semântico)
-    span        : Contêiner genérico em linha (inline)
-
-    -- TÍTULOS E TEXTO --
-    h1 .. h6    : Títulos do nível 1 (principal) ao 6 (subtítulo menor)
-    p           : Parágrafo de texto
-    hr          : Linha horizontal/divisória temática
-    br          : Quebra de linha simples
-
-    -- FORMATAÇÃO DE TEXTO --
-    strong      : Texto em negrito com importância semântica
-    b           : Texto em negrito (apenas visual)
-    em          : Texto em itálico com ênfase
-    i           : Texto em itálico (apenas visual/termo técnico)
-    mark        : Texto destacado/grifado
-    small       : Texto em tamanho reduzido (notas de rodapé, avisos)
-    blockquote  : Citação longa em bloco
-    code        : Trecho de código de computador
-    pre         : Texto pré-formatado (preserva espaços e quebras)
-
-    -- LISTAS --
-    ul          : Lista não ordenada (com marcadores/bullets)
-    ol          : Lista ordenada (numerada)
-    li          : Item individual dentro de uma lista (ul/ol)
-    dl          : Lista de definições
-    dt          : Termo a ser definido
-    dd          : Descrição ou definição do termo
-
-    -- LINKS E MÍDIA --
-    a           : Hiperlink (ex: <a href="url">Texto</a>)
-    img         : Imagem (ex: <img src="caminho" alt="descrição">)
-    audio       : Reprodutor de áudio
-    video       : Reprodutor de vídeo
-    source      : Fonte de mídia para vídeo/áudio
-    iframe      : Quadro para incorporar outra página/vídeo
-
-    -- FORMULÁRIOS E ENTRADA DE DADOS --
-    form        : Formulário para envio de dados
-    label       : Rótulo associado a um campo de formulário
-    input       : Campo de entrada (type: text, email, password, etc.)
-    textarea    : Caixa de texto com múltiplas linhas
-    button      : Botão clicável
-    select      : Menu suspenso (dropdown)
-    option      : Opção individual dentro do select
-
-    -- TABELAS --
-    table       : Tabela de dados
-    thead       : Cabeçalho do conteúdo da tabela
-    tbody       : Corpo principal com os dados da tabela
-    tr          : Linha da tabela
-    th          : Célula do cabeçalho da tabela
-    td          : Célula simples de dados da tabela
+	Espaço pro que ainda vai entrar:
+	- Livros
+	- Artigos e notícias
+	- Template de Notion para controle de candidaturas
 -->
