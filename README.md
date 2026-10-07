@@ -39,11 +39,11 @@
 
 <div>
 	<h2>▶️ Como usar?</h2>
-	<ol>
-		<li>Baixe o arquivo <a href="workshop-empregabilidade.html"><code>workshop-empregabilidade.html</code></a> (no GitHub, abra o arquivo e clique em <i>Download raw file</i>).</li>
-		<li>Abra no navegador. Funciona até sem internet.</li>
-		<li>Navegue pelos slides com o teclado:</li>
-	</ol>
+	<p>
+		Acesse a apresentação direto no navegador:
+		<b><a href="https://vuczar.github.io/hunt42/">https://vuczar.github.io/hunt42/</a></b>
+	</p>
+	<p>Navegue pelos slides com o teclado (ou clicando na tela):</p>
 	<table>
 		<tr><th>Tecla</th><th>O que faz</th></tr>
 		<tr><td><code>→</code> · <code>PageDown</code> · <code>Espaço</code></td><td>avança</td></tr>
@@ -52,6 +52,7 @@
 		<tr><td><code>F</code></td><td>tela cheia</td></tr>
 		<tr><td><code>H</code></td><td>mostra os atalhos</td></tr>
 	</table>
+	<p><i>Quer ver sem internet? Baixe o <a href="index.html"><code>index.html</code></a> e abra no navegador.</i></p>
 	<p>E que a carteira de trabalho recaia sobre você 📘✨</p>
 </div>
 
