@@ -437,7 +437,45 @@ em { font-style: italic; }
 .thanks { text-align: center; font-size: 44px; font-weight: 700; margin-top: -10px; }
 
 /* ---------- Controles do apresentador ---------- */
-.progress { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--ink); width: 0; transition: width .3s ease; z-index: 5; }
+/* ---------- Navegação: barra por capítulo, índice e busca ---------- */
+.navbar { position: fixed; left: 0; right: 0; bottom: 0; height: 16px; display: flex; gap: 3px; z-index: 6; }
+.seg { flex: 1 1 0; min-width: 8px; position: relative; border: 0; padding: 0; background: transparent; cursor: pointer; }
+.seg::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--faint); transition: height .15s ease; }
+.seg i { position: absolute; left: 0; bottom: 0; height: 5px; width: 0; background: var(--ink); z-index: 1; transition: width .3s ease, height .15s ease; }
+.seg:hover::before, .seg:hover i, .seg:focus-visible::before, .seg:focus-visible i { height: 11px; }
+.seg[aria-current="true"]::before { background: var(--bar-dim); }
+.navbtn { position: fixed; left: 14px; bottom: 28px; z-index: 6; font: 15px/1 var(--mono); color: var(--ink); background: var(--paper); border: 2px solid var(--ink); padding: 8px 12px; cursor: pointer; opacity: .8; }
+.navbtn:hover, .navbtn:focus-visible { opacity: 1; }
+#nav { position: fixed; inset: 0; z-index: 40; }
+.nav-back { position: absolute; inset: 0; background: rgba(0,0,0,.35); }
+.nav-panel { position: absolute; left: 0; top: 0; bottom: 0; width: min(560px, 100vw); background: var(--paper); color: var(--ink); border-right: 2px solid var(--ink); display: flex; flex-direction: column; font-family: var(--serif); }
+.nav-top { display: flex; gap: 10px; padding: 14px; border-bottom: 2px solid var(--ink); }
+.nav-top input { flex: 1; min-width: 0; font: 18px var(--serif); padding: 10px 12px; border: 2px solid var(--ink); border-radius: 0; background: var(--paper); color: var(--ink); }
+.nav-top button { width: 48px; font: 26px/1 var(--mono); border: 2px solid var(--ink); background: var(--paper); color: var(--ink); cursor: pointer; }
+.nav-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 6px 0 20px; }
+.nav-foot { padding: 10px 14px; border-top: 1px solid var(--faint); font: 13px var(--mono); color: var(--muted); }
+.gh { display: flex; align-items: stretch; border-bottom: 1px dotted var(--faint); }
+.gh button, .it { font: inherit; color: inherit; background: none; border: 0; text-align: left; cursor: pointer; }
+.gj { flex: 1; display: grid; grid-template-columns: 54px 1fr auto; gap: 8px; align-items: baseline; padding: 11px 6px 11px 14px; font-size: 19px; line-height: 1.25; }
+.gj .n { font: 700 16px var(--mono); }
+.gj .r { font: 13px var(--mono); color: var(--muted); white-space: nowrap; }
+.gj:hover { background: var(--box); }
+.gt { width: 44px; font: 16px var(--mono); }
+.gt::before { content: "▸"; display: inline-block; transition: transform .15s ease; }
+.grp.open .gt::before { transform: rotate(90deg); }
+.grp.cur .gj .t { font-weight: 700; }
+.gs { display: none; list-style: none; margin: 0; padding: 4px 0 8px; background: var(--box); }
+.grp.open .gs { display: block; }
+.it { display: grid; grid-template-columns: 54px 1fr; gap: 8px; width: 100%; padding: 8px 14px; font-size: 17px; line-height: 1.25; }
+.it .no { font: 14px var(--mono); color: var(--muted); text-align: right; }
+.it .ch { display: block; font: 13px var(--mono); color: var(--muted); margin-top: 2px; }
+.it:hover, .it.sel { background: var(--faint); }
+.it.cur { background: var(--ink); color: var(--paper); }
+.it.cur .no, .it.cur .ch { color: var(--faint); }
+.nav-empty { padding: 20px 14px; color: var(--muted); font-style: italic; }
+@media (pointer: coarse) { .nav-foot { display: none; } }
+.toc .link { cursor: pointer; }
+.toc .link:hover { background: var(--box); }
 #blank { position: fixed; inset: 0; background: #000; z-index: 20; }
 #help {
   position: fixed; right: 24px; bottom: 24px; z-index: 30;
@@ -1445,7 +1483,22 @@ processo_de_pensar &gt; resposta_final;</div>
   </div>
 </div>
 
-<div class="progress" id="progress"></div>
+<nav class="navbar" id="navbar" aria-label="Capítulos"></nav>
+<button class="navbtn" id="navbtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Abrir índice dos slides">☰ Índice</button>
+<div id="nav" hidden>
+  <div class="nav-back"></div>
+  <aside class="nav-panel" role="dialog" aria-modal="true" aria-label="Índice dos slides">
+    <div class="nav-top">
+      <input id="navq" type="search" placeholder="Buscar slide…" autocomplete="off" aria-label="Buscar slide">
+      <button id="navx" type="button" aria-label="Fechar índice">×</button>
+    </div>
+    <div class="nav-body">
+      <div id="navlist"></div>
+      <div id="navres" hidden></div>
+    </div>
+    <div class="nav-foot">T ou / abre · Esc fecha · ↑ ↓ Enter na busca</div>
+  </aside>
+</div>
 <div id="blank" hidden></div>
 <div id="help" hidden>
   <div><b>→ · PageDown · espaço</b>avança</div>
@@ -1453,6 +1506,7 @@ processo_de_pensar &gt; resposta_final;</div>
   <div><b>Home · End</b>primeiro · último</div>
   <div><b>F</b>tela cheia</div>
   <div><b>B · .</b>tela preta</div>
+  <div><b>T · /</b>índice e busca</div>
   <div><b>H · ?</b>esta ajuda</div>
 </div>
 
@@ -1566,7 +1620,7 @@ function show(i, st) {
   step = st === "all" ? s._steps.length : st;
   paintFrags(s, step);
   s.classList.add("active");
-  document.getElementById("progress").style.width = ((cur + 1) / total * 100) + "%";
+  updateNav();
   try { history.replaceState(null, "", "#s" + (cur + 1)); } catch (e) {}
 }
 
@@ -1588,11 +1642,239 @@ function fit() {
 window.addEventListener("resize", fit);
 fit();
 
+/* ---------- Navegação: barra por capítulo, índice e busca ---------- */
+// Tudo é montado a partir de data-chap e do título de cada slide: slide novo entra sozinho.
+const navEl = document.getElementById("nav");
+const navBtn = document.getElementById("navbtn");
+const navQ = document.getElementById("navq");
+const navList = document.getElementById("navlist");
+const navRes = document.getElementById("navres");
+const navBar = document.getElementById("navbar");
+
+const norm = t => String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const plain = el => {
+  const c = el.cloneNode(true);
+  c.querySelectorAll(".sub").forEach(x => x.remove());
+  return c.textContent.replace(/\s+/g, " ").trim();
+};
+function romanToInt(r) {
+  const v = { I: 1, V: 5, X: 10 };
+  let t = 0;
+  for (let i = 0; i < r.length; i++) { const a = v[r[i]], b = v[r[i + 1]] || 0; t += a < b ? -a : a; }
+  return t;
+}
+function titleOf(s) {
+  if (s.classList.contains("cover")) return plain(s.querySelector("h1"));
+  if (s.querySelector(".who")) return "whoami";
+  if (s.querySelector(".memes")) return "Memes de vagas";
+  if (s.querySelector(".qr-wrap")) return "QR code: material de apoio";
+  for (const sel of ["h2", ".big-quote", ".opt h3", ".warn h3", ".warn .lbl"]) {
+    const el = s.querySelector(sel);
+    if (el) return plain(el).replace(/^\/!\\\s*/, "").replace(/(\S)\/\s/, "$1 / ");
+  }
+  return s.dataset.ref || "slide";
+}
+
+// capítulos = sequências de slides com o mesmo "Capítulo X" (capa e prefácio juntos; intervalo à parte)
+const groups = [];
+slides.forEach((s, i) => {
+  const m = /^Capítulo ([IVX]+)/.exec(s.dataset.chap || "");
+  const key = m ? m[1] : (s.dataset.chap === "Intervalo" ? "Intervalo" : "Prefácio");
+  let g = groups[groups.length - 1];
+  if (!g || g.key !== key) {
+    g = { key, first: i, count: 0, num: m ? romanToInt(m[1]) : 0, title: key };
+    groups.push(g);
+  }
+  g.count++;
+  s._gi = groups.length - 1;
+  s._title = titleOf(s);
+  if (g.num && s.querySelector(".chapter h2")) g.title = plain(s.querySelector(".chapter h2"));
+  const c = s.cloneNode(true);
+  c.querySelectorAll(".run, .folio, img").forEach(x => x.remove());
+  s._text = norm(c.textContent.replace(/\s+/g, " ") + " " + (s.dataset.chap || ""));
+  s._titleN = norm(s._title);
+});
+groups.forEach(g => { g.label = g.num ? g.key + " · " + g.title : g.title; });
+
+function goSlide(i) {
+  // quem pula pra dentro de um slide quer ler: mostra tudo (menos nos de cronômetro)
+  show(i, slides[i].querySelector(".timer") ? 0 : "all");
+  closeNav();
+}
+
+const segs = groups.map(g => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "seg";
+  b.style.flex = g.count + " 1 0px";
+  b.title = g.label;
+  b.setAttribute("aria-label", "Ir para " + g.label);
+  b.appendChild(document.createElement("i"));
+  b.addEventListener("click", () => goSlide(g.first));
+  navBar.appendChild(b);
+  return b;
+});
+
+function itemBtn(i, withChap) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "it";
+  b.dataset.i = i;
+  const no = document.createElement("span");
+  no.className = "no";
+  no.textContent = i + 1;
+  const tt = document.createElement("span");
+  tt.textContent = slides[i]._title;
+  if (withChap) {
+    const ch = document.createElement("span");
+    ch.className = "ch";
+    ch.textContent = groups[slides[i]._gi].label;
+    tt.appendChild(ch);
+  }
+  b.append(no, tt);
+  return b;
+}
+
+const groupEls = groups.map(g => {
+  const w = document.createElement("div");
+  w.className = "grp";
+  w.innerHTML = '<div class="gh"><button type="button" class="gj"><span class="n"></span><span class="t"></span><span class="r"></span></button>' +
+    '<button type="button" class="gt" aria-label="Mostrar slides do capítulo" aria-expanded="false"></button></div><ul class="gs"></ul>';
+  w.querySelector(".n").textContent = g.num ? g.key : "";
+  w.querySelector(".t").textContent = g.title;
+  w.querySelector(".r").textContent = (g.first + 1) + (g.count > 1 ? "–" + (g.first + g.count) : "");
+  const ul = w.querySelector(".gs");
+  for (let i = g.first + (g.num ? 1 : 0); i < g.first + g.count; i++) {
+    const li = document.createElement("li");
+    li.appendChild(itemBtn(i, false));
+    ul.appendChild(li);
+  }
+  navList.appendChild(w);
+  return w;
+});
+
+let sel = 0;
+function setSel(n) {
+  const its = navRes.querySelectorAll(".it");
+  if (!its.length) return;
+  sel = (n + its.length) % its.length;
+  its.forEach((b, k) => b.classList.toggle("sel", k === sel));
+  its[sel].scrollIntoView({ block: "nearest" });
+}
+function runSearch() {
+  const terms = norm(navQ.value).split(/\s+/).filter(Boolean);
+  navList.hidden = terms.length > 0;
+  navRes.hidden = !terms.length;
+  navRes.textContent = "";
+  if (!terms.length) return;
+  const hits = [];
+  slides.forEach((s, i) => {
+    if (terms.every(w => s._text.includes(w))) hits.push([i, terms.every(w => s._titleN.includes(w)) ? 0 : 1]);
+  });
+  hits.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
+  if (!hits.length) {
+    const d = document.createElement("div");
+    d.className = "nav-empty";
+    d.textContent = "Nenhum slide encontrado.";
+    navRes.appendChild(d);
+    return;
+  }
+  hits.forEach(h => navRes.appendChild(itemBtn(h[0], true)));
+  setSel(0);
+}
+
+function syncActive(scroll) {
+  const gi = slides[cur]._gi;
+  navList.querySelectorAll(".it").forEach(b => b.classList.toggle("cur", Number(b.dataset.i) === cur));
+  groupEls.forEach((w, k) => {
+    w.classList.toggle("cur", k === gi);
+    if (k === gi) w.classList.add("open");
+    w.querySelector(".gt").setAttribute("aria-expanded", w.classList.contains("open"));
+  });
+  if (scroll) {
+    const el = navList.querySelector(".it.cur") || navList.querySelector(".grp.cur .gj");
+    if (el) el.scrollIntoView({ block: "center" });
+  }
+}
+function updateNav() {
+  const gi = slides[cur]._gi;
+  segs.forEach((b, k) => {
+    const g = groups[k];
+    const pct = k < gi ? 100 : k === gi ? (cur - g.first + 1) / g.count * 100 : 0;
+    b.firstChild.style.width = pct + "%";
+    b.setAttribute("aria-current", k === gi ? "true" : "false");
+  });
+  if (!navEl.hidden) syncActive(false);
+}
+function openNav(focusSearch) {
+  navQ.value = "";
+  runSearch();
+  navEl.hidden = false;
+  navBtn.setAttribute("aria-expanded", "true");
+  syncActive(true);
+  if (focusSearch) navQ.focus();
+}
+function closeNav() {
+  if (navEl.hidden) return;
+  navEl.hidden = true;
+  navBtn.setAttribute("aria-expanded", "false");
+  if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+}
+function navKey(e) {
+  if (e.key === "Escape") { e.preventDefault(); closeNav(); return; }
+  if (navRes.hidden || e.target.closest(".it")) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); setSel(sel + 1); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); setSel(sel - 1); }
+  else if (e.key === "Enter") {
+    const b = navRes.querySelectorAll(".it")[sel];
+    if (b) { e.preventDefault(); goSlide(Number(b.dataset.i)); }
+  }
+}
+
+navBtn.addEventListener("click", () => openNav(window.matchMedia("(pointer: fine)").matches));
+document.getElementById("navx").addEventListener("click", closeNav);
+navEl.querySelector(".nav-back").addEventListener("click", closeNav);
+navQ.addEventListener("input", runSearch);
+navList.addEventListener("click", e => {
+  const gt = e.target.closest(".gt"), gj = e.target.closest(".gj"), it = e.target.closest(".it");
+  if (gt) {
+    const w = gt.closest(".grp");
+    w.classList.toggle("open");
+    gt.setAttribute("aria-expanded", w.classList.contains("open"));
+  } else if (gj) goSlide(groups[groupEls.indexOf(gj.closest(".grp"))].first);
+  else if (it) goSlide(Number(it.dataset.i));
+});
+navRes.addEventListener("click", e => {
+  const it = e.target.closest(".it");
+  if (it) goSlide(Number(it.dataset.i));
+});
+
+// o sumário do slide 5 vira link pra cada capítulo
+document.querySelectorAll(".toc div").forEach(d => {
+  const n = d.querySelector(".n");
+  const g = n && groups.find(x => x.num && x.key === n.textContent.trim());
+  if (!g) return;
+  d.classList.add("link");
+  d.title = "Ir para o capítulo " + g.key;
+  d.addEventListener("click", e => { e.stopPropagation(); goSlide(g.first); });
+});
+
+// #s42 abre o slide 42; #cap-3 abre o capítulo III
+function goHash() {
+  let m = /^#s(\d+)$/.exec(location.hash);
+  if (m) { show(Number(m[1]) - 1, 0); return true; }
+  m = /^#cap-(\d+)$/.exec(location.hash);
+  const g = m && groups.find(x => x.num === Number(m[1]));
+  if (g) { show(g.first, 0); return true; }
+  return false;
+}
+
 const blank = document.getElementById("blank");
 const help = document.getElementById("help");
 
 document.addEventListener("keydown", e => {
   if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (!navEl.hidden) { navKey(e); return; }
   const k = e.key;
   if (k === "ArrowRight" || k === "PageDown" || k === " " || k === "Enter" || k === "ArrowDown") { e.preventDefault(); blank.hidden = true; next(); }
   else if (k === "ArrowLeft" || k === "PageUp" || k === "ArrowUp" || k === "Backspace") { e.preventDefault(); blank.hidden = true; prev(); }
@@ -1607,6 +1889,7 @@ document.addEventListener("keydown", e => {
       else if (document.exitFullscreen) { document.exitFullscreen().catch(() => {}); }
     } catch (err) {}
   }
+  else if (k === "t" || k === "T" || k === "/") { e.preventDefault(); openNav(true); }
   else if (k === "h" || k === "H" || k === "?") { help.hidden = !help.hidden; }
   else if (k === "Escape") { help.hidden = true; blank.hidden = true; }
 });
@@ -1616,7 +1899,10 @@ document.getElementById("deck").addEventListener("click", e => {
 });
 
 let tx = null;
-document.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener("touchstart", e => {
+  // deslizar dentro do índice ou da barra não troca de slide
+  tx = (!navEl.hidden || e.target.closest("#navbar, #navbtn")) ? null : e.touches[0].clientX;
+}, { passive: true });
 document.addEventListener("touchend", e => {
   if (tx === null) return;
   const dx = e.changedTouches[0].clientX - tx;
@@ -1624,8 +1910,8 @@ document.addEventListener("touchend", e => {
   tx = null;
 });
 
-const m = /^#s(\d+)$/.exec(location.hash || "");
-show(m ? Number(m[1]) - 1 : 0, 0);
+if (!goHash()) show(0, 0);
+window.addEventListener("hashchange", goHash);
 </script>
 </body>
 </html>

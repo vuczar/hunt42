@@ -43,13 +43,24 @@
 		Acesse a apresentação direto no navegador:
 		<b><a href="https://vuczar.github.io/hunt42/">https://vuczar.github.io/hunt42/</a></b>
 	</p>
-	<p>Navegue pelos slides com o teclado (ou clicando na tela):</p>
+	<p>
+			São 95 slides, então não precisa passar um a um: use o botão <b>☰ Índice</b> (canto inferior esquerdo)
+			para pular para qualquer capítulo ou slide, ou buscar por uma palavra.
+			A barra no rodapé mostra onde você está e também é clicável: cada trecho é um capítulo.
+			O sumário do slide 5 também leva direto ao capítulo.
+		</p>
+		<p>
+			Dá para linkar direto: <code>#cap-3</code> abre o capítulo III e <code>#s42</code> abre o slide 42
+			(ex.: <a href="https://vuczar.github.io/hunt42/#cap-3">…/hunt42/#cap-3</a>).
+		</p>
+		<p>No teclado (ou clicando/deslizando na tela):</p>
 	<table>
 		<tr><th>Tecla</th><th>O que faz</th></tr>
 		<tr><td><code>→</code> · <code>PageDown</code> · <code>Espaço</code></td><td>avança</td></tr>
 		<tr><td><code>←</code> · <code>PageUp</code></td><td>volta</td></tr>
 		<tr><td><code>Home</code> · <code>End</code></td><td>primeiro · último slide</td></tr>
-		<tr><td><code>F</code></td><td>tela cheia</td></tr>
+		<tr><td><code>T</code> · <code>/</code></td><td>índice e busca</td></tr>
+			<tr><td><code>F</code></td><td>tela cheia</td></tr>
 		<tr><td><code>H</code></td><td>mostra os atalhos</td></tr>
 	</table>
 	<p><i>Quer ver sem internet? Baixe o <a href="index.html"><code>index.html</code></a> e abra no navegador.</i></p>
